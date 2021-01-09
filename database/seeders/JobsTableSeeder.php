@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Job;
+use App\Models\Requirement;
 
 class JobsTableSeeder extends Seeder
 {
