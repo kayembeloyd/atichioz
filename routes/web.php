@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\OrganizationsController;
+use App\Http\Controllers\JobsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
