@@ -21,6 +21,32 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+Vue.component(
+    'submenu',
+    require('./components/submenu.vue').default
+);
+
+Vue.component(
+    'staggeredcategories',
+    require('./components/staggeredcategories.vue').default
+);
+
+Vue.component(
+    'myjobs',
+    require('./components/myjobs.vue').default
+);
+
+Vue.component(
+    'jobcats',
+    require('./components/jobcats.vue').default
+);
+
+Vue.component(
+    'joborgs',
+    require('./components/joborgs.vue').default
+);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
