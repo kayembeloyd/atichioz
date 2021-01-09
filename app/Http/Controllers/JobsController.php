@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Job;
+use App\Models\Category;
+use App\Models\Organization;
+use App\Models\Requirement;
+use App\Http\Resources\Job as JobResource;
 
 class JobsController extends Controller
 {

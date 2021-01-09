@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Http\Resources\Category as CategoryResource;
 
 class CategoriesController extends Controller
 {

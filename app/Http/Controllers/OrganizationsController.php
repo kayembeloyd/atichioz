@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Organization;
+use App\Models\Category;
+use App\Http\Resources\Organization as OrganizationResource;
+
 
 class OrganizationsController extends Controller
 {
