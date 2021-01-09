@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/jobs', 'App\Http\Controllers\JobsController@store');
+
+Route::post('/categories', 'App\Http\Controllers\CategoriesController@store');
+
+Route::post('/organizations', 'App\Http\Controllers\OrganizationsController@store');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
