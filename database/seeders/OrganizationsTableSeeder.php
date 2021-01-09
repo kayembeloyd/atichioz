@@ -13,6 +13,9 @@ class OrganizationsTableSeeder extends Seeder
      */
     public function run()
     {
+        Organization::factory()
+            ->times(25)
+            ->create();
         //
     }
 }

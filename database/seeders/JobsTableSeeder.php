@@ -13,6 +13,10 @@ class JobsTableSeeder extends Seeder
      */
     public function run()
     {
+        Job::factory()
+            ->times(100)
+            ->has(Requirement::factory()->count(10))
+            ->create();
         //
     }
 }

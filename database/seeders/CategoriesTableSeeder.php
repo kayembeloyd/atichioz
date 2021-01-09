@@ -13,6 +13,9 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        Category::factory()
+            ->times(30)
+            ->create();
         //
     }
 }
