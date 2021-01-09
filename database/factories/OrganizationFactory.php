@@ -22,6 +22,8 @@ class OrganizationFactory extends Factory
     public function definition()
     {
         return [
+            'name' => $this->faker->text(25),
+            'description' => $this->faker->text(700)
             //
         ];
     }

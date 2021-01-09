@@ -22,6 +22,7 @@ class RequirementFactory extends Factory
     public function definition()
     {
         return [
+            'description' => $this->faker->text(100),
             //
         ];
     }
