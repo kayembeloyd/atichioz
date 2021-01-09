@@ -34,6 +34,15 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+			'category_name' => 'required'
+		]);
+
+		Category::create([
+			'name' => $data['category_name']
+        ]);
+        
+		return redirect('/admin/category/create');
         //
     }
 

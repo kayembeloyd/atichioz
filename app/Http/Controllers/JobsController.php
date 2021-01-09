@@ -34,6 +34,62 @@ class JobsController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+			'job_title' => 'required',
+			'job_description_little' => '',
+            'job_description' => '',
+            'job_organization' => '',
+            'r1' => '',
+            'r2' => '',
+            'r3' => '',
+            'r4' => '',
+            'selected_categories' => ''
+        ]);
+        
+        $tempJob = new Job();
+		$tempJob->title = $data['job_title']; 
+		$tempJob->description_little = $data['job_description_little']; 
+		$tempJob->description = $data['job_description']; 
+
+		if (Organization::where('name', $data['job_organization'])->first()){
+			$tempJob->organization()->associate(Organization::where('name', $data['job_organization'])->first());
+            $tempJob->save();
+            
+            foreach ($data['selected_categories'] as $selected_category) {
+                Job::find($tempJob->id)->categories()->save(Category::where('name', $selected_category)->first());
+            }
+
+
+            if ($data['r1'] != '' ){
+                $req = new Requirement();
+                $req->description = $data['r1'];
+                $req->save();
+                Job::find($tempJob->id)->requirements()->save(Requirement::findOrFail($req->id));
+            }
+
+            if ($data['r2'] != '' ){
+                $req = new Requirement();
+                $req->description = $data['r2'];
+                $req->save();
+                Job::find($tempJob->id)->requirements()->save(Requirement::findOrFail($req->id));
+            }
+            
+            if ($data['r3'] != '' ){
+                $req = new Requirement();
+                $req->description = $data['r3'];
+                $req->save();
+                Job::find($tempJob->id)->requirements()->save(Requirement::findOrFail($req->id));
+            }
+
+            if ($data['r4'] != '' ){
+                $req = new Requirement();
+                $req->description = $data['r4'];
+                $req->save();
+                Job::find($tempJob->id)->requirements()->save(Requirement::findOrFail($req->id));
+            } 
+        } 
+
+		return redirect('/admin/job/create');
         //
     }
 

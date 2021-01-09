@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Creations
+Route::get('/admin/job/create', [JobsController::class, 'create'])->name('jobs.create'); 
+
+Route::get('/admin/organization/create',  [OrganizationsController::class, 'create'])->name('organizations.create');
+
+Route::get('/admin/category/create', function() {
+    return view('admin.categorycreate');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

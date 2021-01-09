@@ -34,6 +34,17 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+			'feedback_body' => 'required',
+        ]);
+        
+        $tempFeedback = new Feedback();
+        $tempFeedback->details = $data['feedback_body'];
+        $tempFeedback->star_level = 0;
+
+        $tempFeedback->save();
+
+		return '{}';
         //
     }
 

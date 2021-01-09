@@ -34,6 +34,24 @@ class OrganizationsController extends Controller
      */
     public function store(Request $request)
     {
+        $data = request()->validate([
+			'organization_name' => 'required',
+			'organization_description' => '',
+			'selected_categories' => ''
+		]);
+
+		$tempOrganization = new Organization();
+
+		$tempOrganization->name = $data['organization_name'];
+        $tempOrganization->description = $data['organization_description'];
+		$tempOrganization->save();
+        $selectedCats = $data['selected_categories'];
+
+        foreach ($selectedCats as $selectedCat) {
+		    Organization::find($tempOrganization->id)->categories()->save(Category::where('name', $selectedCat)->first());
+        } 
+
+		return redirect('/admin/organization/create');
         //
     }
 
