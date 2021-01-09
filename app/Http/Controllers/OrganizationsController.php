@@ -27,6 +27,10 @@ class OrganizationsController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
+
+		return view('admin.organizationcreate', compact('categories'));
+        //
         //
     }
 

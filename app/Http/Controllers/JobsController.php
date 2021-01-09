@@ -28,6 +28,10 @@ class JobsController extends Controller
      */
     public function create()
     {
+        $categories = Category::all();
+        $organizations = Organization::all();
+
+		return view('admin.jobcreate', compact('categories', 'organizations'));   
         //
     }
 
