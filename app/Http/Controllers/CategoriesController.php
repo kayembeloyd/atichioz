@@ -15,6 +15,14 @@ class CategoriesController extends Controller
      */
     public function index()
     {
+        $categories = Category::paginate(15);
+
+        foreach ($categories as $category) {
+            // Add number of jobs in each category
+            $category['number_of_jobs'] = $category->jobs()->count();
+        }
+
+        return CategoryResource::collection($categories);
         //
     }
 

@@ -18,8 +18,65 @@ class JobsController extends Controller
      */
     public function index()
     {
+        $jobs = Job::orderBy('created_at', 'DESC')->paginate(13);
+
+        foreach ($jobs as $job) {
+            $job['organization_name'] = $job->organization->name;
+            $job['posted_at'] =  $job['created_at']->diffForHumans(null, true, true, 2);
+            unset($job['description']);
+            unset($job['organization_id']);
+            unset($job['organization']);
+            unset($job['created_at']);
+            unset($job['updated_at']);
+        }
+
+        return JobResource::collection($jobs);
         //
     }
+
+    // Note this $category comes as a category name 
+    public function jobsInCategoriesIndex($category)
+    { 
+        $jobs = Category::where('name', $category)
+                    ->firstOrFail()
+                    ->jobs()
+                    ->orderBy('created_at', 'DESC')
+                    ->paginate(13);
+        
+        foreach ($jobs as $job) {
+            $job['organization_name'] = $job->organization->name;
+            $job['posted_at'] =  $job['created_at']->diffForHumans(null, true, true, 2);
+            unset($job['description']);
+            unset($job['organization_id']);
+            unset($job['organization']);
+            unset($job['created_at']);
+            unset($job['updated_at']);
+        }
+
+        return JobResource::collection($jobs);
+    }
+
+    // Note this $organization comes as an organization name 
+    public function jobsInOrganizationIndex($organization){
+        $jobs = Organization::where('name', $organization)
+                    ->firstOrFail()
+                    ->jobs()
+                    ->orderBy('created_at', 'DESC')
+                    ->paginate(13);
+        
+        foreach ($jobs as $job) {
+            $job['organization_name'] = $job->organization->name;
+            $job['posted_at'] =  $job['created_at']->diffForHumans(null, true, true, 2);
+            unset($job['description']);
+            unset($job['organization_id']);
+            unset($job['organization']);
+            unset($job['created_at']);
+            unset($job['updated_at']);
+        }
+
+        return JobResource::collection($jobs);
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -110,6 +167,9 @@ class JobsController extends Controller
      */
     public function show($id)
     {
+        $job = Job::findOrFail($id);
+
+        return new JobResource($job);
         //
     }
 
