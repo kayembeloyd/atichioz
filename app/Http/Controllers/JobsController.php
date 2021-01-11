@@ -11,6 +11,25 @@ use App\Http\Resources\Job as JobResource;
 
 class JobsController extends Controller
 {
+
+    public function related($id){
+        $jobs = Job::paginate(5);
+        
+        foreach ($jobs as $job) {
+            $job['organization_name'] = $job->organization->name;
+            $job['posted_at'] =  $job['created_at']->diffForHumans(null, true, true, 2);
+            unset($job['description']);
+            unset($job['description_little']);
+            unset($job['organization_id']);
+            unset($job['organization']);
+            unset($job['created_at']);
+            unset($job['updated_at']);
+        }
+
+        return JobResource::collection($jobs);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -168,7 +187,14 @@ class JobsController extends Controller
     public function show($id)
     {
         $job = Job::findOrFail($id);
-
+        $job['posted_at'] =  $job['created_at']->diffForHumans(null, true, true, 2);
+        $job['organization_name'] = $job->organization->name;
+        $job['organization_description'] = $job->organization->description;
+        $job['requirements'] = $job->requirements;
+        unset($job['organization']);
+        unset($job['created_at']);
+        unset($job['updated_at']);
+        
         return new JobResource($job);
         //
     }

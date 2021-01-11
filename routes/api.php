@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/jobs', 'App\Http\Controllers\JobsController@store');
 Route::get('/jobs', 'App\Http\Controllers\JobsController@index');
 Route::get('job/{id}', 'App\Http\Controllers\JobsController@show'); // okay
+Route::get('job/related/{id}', 'App\Http\Controllers\JobsController@related'); // okay
 
 Route::post('/categories', 'App\Http\Controllers\CategoriesController@store');
 Route::get('/categories', 'App\Http\Controllers\CategoriesController@index');
