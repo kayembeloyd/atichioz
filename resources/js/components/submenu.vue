@@ -49,16 +49,7 @@
                     <li><img src="../images/keyboard_arrow_right-24px-white.svg" alt=""></li>
                     <li>{{l1}}</li>
                 </nav>
-            </template>
-
-            <!--
-            <nav class="sub-menu">
-                <li>Jobs</li>
-                <li>Job Categories</li>
-                <li>Companies/Organizations</li>
-                <li>About Us</li>
-            </nav>  
-            -->          
+            </template>    
         </div>
     </div>
 </template>

@@ -17,6 +17,17 @@ class OrganizationsController extends Controller
      */
     public function index()
     {
+        $organizations = Organization::paginate(15);
+
+        foreach ($organizations as $organization) {
+            $organization['number_of_jobs'] = $organization->jobs()->count();
+            unset($organization['description']);
+            unset($organization['created_at']);
+            unset($organization['updated_at']);
+            unset($organization['logo']);
+        }
+
+        return OrganizationResource::collection($organizations);
         //
     }
 

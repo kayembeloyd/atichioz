@@ -14,6 +14,46 @@ use App\Http\Controllers\JobsController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/categories', function () {
+    return view('jobcategories');
+});
+
+Route::get('/categories/{category}', function ($category) {
+    return view('jobs_in_category', ['category' => $category]);
+});
+
+Route::get('/categories/{category}/jobs/job/{id}', function ($category) {
+    return view('maintainance');
+});
+
+Route::get('/organizations', function () {
+    return view('organizations');
+});
+
+Route::get('/organizations/{organization}', function ($organization) {
+    return view('jobs_in_organization', ['organization' => $organization]);
+});
+
+Route::get('/organizations/{organization}/jobs/job/{id}', function ($organization) {
+    return view('maintainance');
+});
+
+Route::get('/jobs/job/{id}', function($id){
+    return view('maintainance');
+});
+
+Route::get('/job/{id}', function($id){
+    return view('maintainance');
+});
+
+Route::get('/jobs/job/{id}', function($id){
+    return view('maintainance');
+});
+
 // Creations
 Route::get('/admin/job/create', [JobsController::class, 'create'])->name('jobs.create'); 
 
@@ -21,11 +61,7 @@ Route::get('/admin/organization/create',  [OrganizationsController::class, 'crea
 
 Route::get('/admin/category/create', function() {
     return view('admin.categorycreate');
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
+}); 
 
 Auth::routes();
 
