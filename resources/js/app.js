@@ -46,6 +46,10 @@ Vue.component(
     require('./components/joborgs.vue').default
 );
 
+Vue.component(
+    'myjobsleft',
+    require('./components/myjobsleft.vue').default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrganizationsController;
 use App\Http\Controllers\JobsController;
+use App\Models\Job;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,8 +28,13 @@ Route::get('/categories/{category}', function ($category) {
     return view('jobs_in_category', ['category' => $category]);
 });
 
-Route::get('/categories/{category}/jobs/job/{id}', function ($category) {
-    return view('maintainance');
+Route::get('/categories/{category}/jobs/job/{id}', function ($category, $id) {
+    return view('job', ['view_type' => '.jobs_in_category', 
+                        'organization' => '', 
+                        'category' => $category, 
+                        'job_title' => Job::findOrFail($id)->title,
+                        'job_id' => $id
+                        ]);
 });
 
 Route::get('/organizations', function () {
@@ -38,19 +45,25 @@ Route::get('/organizations/{organization}', function ($organization) {
     return view('jobs_in_organization', ['organization' => $organization]);
 });
 
-Route::get('/organizations/{organization}/jobs/job/{id}', function ($organization) {
-    return view('maintainance');
+Route::get('/organizations/{organization}/jobs/job/{id}', function ($organization, $id) {
+    return view('job', ['view_type' => '.jobs_in_organization', 
+                        'organization' => $organization, 
+                        'category' => '', 
+                        'job_title' => Job::findOrFail($id)->title,
+                        'job_id' => $id
+                        ]);
 });
 
-Route::get('/jobs/job/{id}', function($id){
-    return view('maintainance');
+Route::get('/jobs/job/{id}', function($id){ 
+    return view('job', ['view_type' => '.jobs', 
+                        'organization' => '', 
+                        'category' => '', 
+                        'job_title' => Job::findOrFail($id)->title, 
+                        'job_id' => $id
+                        ]);
 });
 
 Route::get('/job/{id}', function($id){
-    return view('maintainance');
-});
-
-Route::get('/jobs/job/{id}', function($id){
     return view('maintainance');
 });
 

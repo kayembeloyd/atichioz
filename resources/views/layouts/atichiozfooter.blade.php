@@ -3,11 +3,11 @@
         <div class="rating">
             <label>Rate site</label>
             <ul>
-                <li><img src="../images/star.svg" alt=""></li>
-                <li><img src="../images/star.svg" alt=""></li>
-                <li><img src="../images/star.svg" alt=""></li>
-                <li><img src="../images/star.svg" alt=""></li>
-                <li><img src="../images/star.svg" alt=""></li>
+                <li><img src="/images/star.svg" alt=""></li>
+                <li><img src="/images/star.svg" alt=""></li>
+                <li><img src="/images/star.svg" alt=""></li>
+                <li><img src="/images/star.svg" alt=""></li>
+                <li><img src="/images/star.svg" alt=""></li>
             </ul>
         </div>
 

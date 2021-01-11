@@ -1,12 +1,12 @@
 <div>
     <header>
         <div class="logo-area">
-            <a href="/"><img class="logo" src="../images/logo-black.svg" alt=""></a>
+            <a href="/"><img class="logo" src="/images/logo-black.svg" alt=""></a>
         </div>
     
         <div class="search-area">
             <div class="search-area-input">
-                <img class="icon" src="../images/menu.svg"
+                <img class="icon" src="/images/menu.svg"
                     alt="Location dropdown" />
                 <input id="s-jobtitle" class="input-jobtitle" type="text" name="search-jobtitle" placeholder="Search jobs..." />
             </div>
@@ -16,7 +16,7 @@
                 <input id="locationInput" class="search-area-input location" type="text" name="search-location"
                     placeholder="Location?" />
                 <img onclick="dropDownToggle()" class="icon" id="search-location-dropdown"
-                    src="../images/keyboard_arrow_down-24px.svg" alt="Location dropdown" />
+                    src="/images/keyboard_arrow_down-24px.svg" alt="Location dropdown" />
             </div>
     
             <div class="search-submit">
@@ -24,7 +24,7 @@
                 <img 
                     class="icon" 
                     id="search-action" 
-                    src="../images/search.svg" 
+                    src="/images/search.svg" 
                     alt="Search" onclick="
                                     // event.preventDefault();
                                     // myjobs.doSomethingFromOutside(document.getElementById('s-jobtitle').value);
@@ -51,7 +51,7 @@
                 </div>
             @else
                 <div class="btn-grp">
-                    <img id="pr" src="../images/profile.svg" alt="">
+                    <img id="pr" src="/images/profile.svg" alt="">
                     <button id="lg-in"> 
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }}
