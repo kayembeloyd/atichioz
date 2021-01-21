@@ -79,3 +79,5 @@ Route::get('/admin/category/create', function() {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+URL::forceScheme('https');
